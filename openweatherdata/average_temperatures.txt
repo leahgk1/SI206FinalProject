@@ -1,0 +1,27 @@
+Average Temperature by City (°F):
+
+Orlando: 88.75°F
+Tampa: 86.72°F
+Miami: 84.46°F
+Houston: 79.58°F
+Austin: 79.44°F
+New Orleans: 76.84°F
+Dallas: 75.48°F
+Atlanta: 74.44°F
+Phoenix: 70.27°F
+Charlotte: 68.82°F
+Nashville: 64.06°F
+Las Vegas: 63.45°F
+Los Angeles: 63.03°F
+San Diego: 60.66°F
+San Francisco: 55.31°F
+Philadelphia: 53.70°F
+Portland: 51.88°F
+New York: 51.66°F
+Boston: 51.56°F
+Washington: 51.50°F
+Denver: 51.47°F
+Seattle: 47.42°F
+Chicago: 40.09°F
+Salt Lake City: 38.96°F
+Minneapolis: 37.68°F
