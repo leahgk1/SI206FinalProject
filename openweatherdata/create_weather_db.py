@@ -13,7 +13,7 @@ def create_tables():
         )
     ''')
 
-    # create Weather table
+    # create Weather table with formatted_time column
     cur.execute('''
         CREATE TABLE IF NOT EXISTS Weather (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,6 +22,7 @@ def create_tables():
             humidity INTEGER,
             description TEXT,
             datetime INTEGER,
+            formatted_time TEXT,
             FOREIGN KEY(city_id) REFERENCES Cities(id)
         )
     ''')
