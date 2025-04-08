@@ -4,6 +4,7 @@ import sqlite3
 from datetime import datetime
 
 API_KEY = "" # Trip advisor API requires payment information. Will complete later. 
+# Use of tripadvisor api is improbable; will most likely use Yelp api upon discussion with my teammates.
 BASE_URL = "https://api.content.tripadvisor.com/api/v1"
 
 def get_city_data(city_name):
