@@ -1,5 +1,6 @@
 import sqlite3
-
+import matplotlib.pyplot as plt
+from collections import Counter
 
 conn = sqlite3.connect('travel_project.db')
 cur = conn.cursor()
@@ -62,4 +63,53 @@ with open("weather_analysis.txt", "w") as f:
         f.write(line + "\n")
 
 conn.close()
+
+# bar chart for average temperature by city
+cities_temp = [city for city, temp in avg_temp_results]
+temps = [temp for city, temp in avg_temp_results]
+
+plt.figure(figsize=(12, 8))
+plt.barh(cities_temp, temps, edgecolor='black')
+plt.xlabel("Average Temperature (°F)")
+plt.title("Average Temperature by City (Spring Snapshot)")
+plt.gca().invert_yaxis()  # So hottest cities appear at top
+plt.tight_layout()
+plt.savefig("average_temperature_chart.png")
+plt.show()
+
+
+# bar chart for most common weather conditions overall
+conn = sqlite3.connect('travel_project.db')
+cur = conn.cursor()
+cur.execute('SELECT description FROM Weather')
+descriptions = [row[0] for row in cur.fetchall()]
+conn.close()
+
+# count occurrences
+condition_counts = Counter(descriptions)
+labels = list(condition_counts.keys())
+values = list(condition_counts.values())
+
+plt.figure(figsize=(10, 6))
+plt.bar(labels, values, edgecolor='black')
+plt.xticks(rotation=45, ha='right')
+plt.ylabel("Frequency")
+plt.title("Most Common Weather Conditions Across All Cities")
+plt.tight_layout()
+plt.savefig("weather_condition_frequency.png")
+plt.show()
+
+# bar chart for average humidity by city 
+cities_humidity = [city for city, humidity in avg_humidity_results]
+humidity_values = [humidity for city, humidity in avg_humidity_results]
+
+plt.figure(figsize=(12, 8))
+plt.barh(cities_humidity, humidity_values, color='skyblue', edgecolor='black')
+plt.xlabel("Average Humidity (%)")
+plt.title("Average Humidity by City (Spring Snapshot)")
+plt.gca().invert_yaxis()
+plt.tight_layout()
+plt.savefig("average_humidity_chart.png")
+plt.show()
+
 print("\nResults saved to weather_analysis.txt") # check it all worked
