@@ -43,7 +43,7 @@ def store_weather_data():
             description = data["weather"][0]["description"]
             timestamp = data["dt"]  # UNIX timestamp
 
-            # convert to EST (used chat to help with this). WIth UNIX, it becomes more difficult to read
+            # convert to EST (used chat to help with this). With UNIX, it becomes more difficult to read
             utc_time = datetime.utcfromtimestamp(timestamp)
             est = pytz.timezone('US/Eastern')
             est_time = utc_time.replace(tzinfo=pytz.utc).astimezone(est)
