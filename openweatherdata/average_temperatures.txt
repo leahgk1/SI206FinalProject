@@ -1,27 +1,84 @@
 Average Temperature by City (°F):
 
-Orlando: 88.75°F
-Tampa: 86.72°F
-Miami: 84.46°F
-Houston: 79.58°F
-Austin: 79.44°F
-New Orleans: 76.84°F
-Dallas: 75.48°F
-Atlanta: 74.44°F
-Phoenix: 70.27°F
-Charlotte: 68.82°F
-Nashville: 64.06°F
-Las Vegas: 63.45°F
-Los Angeles: 63.03°F
-San Diego: 60.66°F
-San Francisco: 55.31°F
-Philadelphia: 53.70°F
-Portland: 51.88°F
-New York: 51.66°F
-Boston: 51.56°F
-Washington: 51.50°F
-Denver: 51.47°F
-Seattle: 47.42°F
-Chicago: 40.09°F
-Salt Lake City: 38.96°F
-Minneapolis: 37.68°F
+Miami: 78.05°F
+Tampa: 77.82°F
+Orlando: 75.68°F
+Richmond: 75.12°F
+Raleigh: 74.68°F
+Washington D.C.: 73.69°F
+Charlotte: 73.58°F
+Jacksonville: 73.48°F
+Savannah: 72.72°F
+Baltimore: 72.16°F
+Atlanta: 72.07°F
+Charleston: 71.86°F
+Philadelphia: 70.30°F
+Pittsburgh: 69.31°F
+Cincinnati: 68.01°F
+New York: 68.00°F
+Columbus: 67.39°F
+Boston: 65.62°F
+Hartford: 64.25°F
+Indianapolis: 63.18°F
+Providence: 62.84°F
+Cleveland: 59.75°F
+Augsburg: 58.25°F
+Detroit: 57.17°F
+Buffalo: 52.02°F
+
+Average Humidity by City (%):
+
+New York: 45.25%
+Boston: 45.75%
+Pittsburgh: 47.00%
+Providence: 49.75%
+Philadelphia: 50.50
+Hartford: 51.50%
+Augsburg: 53.50%
+Baltimore: 55.25%
+Washington D.C.: 57.75%
+Atlanta: 60.00%
+Tampa: 61.25%
+Columbus: 62.25%
+Miami: 65.25%
+Richmond: 66.50%
+Cleveland: 66.75%
+Orlando: 66.75%
+Raleigh: 68.75%
+Cincinnati: 69.50%
+Charlotte: 70.00%
+Jacksonville: 71.25%
+Detroit: 72.75%
+Savannah: 75.00%
+Charleston: 76.00%
+Buffalo: 77.00%
+Indianapolis: 78.25%
+
+Most Common Weather Condition by City:
+
+Atlanta: few clouds (2 times)
+Augsburg: clear sky (2 times)
+Baltimore: overcast clouds (3 times)
+Boston: scattered clouds (2 times)
+Buffalo: broken clouds (2 times)
+Charleston: clear sky (3 times)
+Charlotte: broken clouds (2 times)
+Cincinnati: clear sky (2 times)
+Cleveland: moderate rain (1 times)
+Columbus: overcast clouds (2 times)
+Detroit: scattered clouds (2 times)
+Hartford: clear sky (3 times)
+Indianapolis: broken clouds (2 times)
+Jacksonville: broken clouds (2 times)
+Miami: broken clouds (2 times)
+New York: clear sky (3 times)
+Orlando: clear sky (2 times)
+Philadelphia: overcast clouds (2 times)
+Pittsburgh: broken clouds (2 times)
+Providence: broken clouds (2 times)
+Raleigh: scattered clouds (2 times)
+Richmond: broken clouds (2 times)
+Savannah: clear sky (4 times)
+Tampa: few clouds (2 times)
+Washington D.C.: overcast clouds (2 times)
+
