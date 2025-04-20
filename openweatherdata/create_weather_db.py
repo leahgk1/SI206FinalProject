@@ -4,7 +4,7 @@ def create_tables():
     conn = sqlite3.connect('travel_project.db')
     cur = conn.cursor()
 
-    # create Cities table
+    # create cities table
     cur.execute('''
         CREATE TABLE IF NOT EXISTS Cities (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -13,7 +13,7 @@ def create_tables():
         )
     ''')
 
-    # create Weather table with formatted_time column
+    # create weather table with formatted_time column
     cur.execute('''
         CREATE TABLE IF NOT EXISTS Weather (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
