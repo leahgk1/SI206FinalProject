@@ -37,29 +37,32 @@ def store_weather_data():
 
         if response.status_code == 200 and "main" in data:
             city_name = data["name"]
-            country = data["sys"]["country"]
             temperature = data["main"]["temp"]
             humidity = data["main"]["humidity"]
             description = data["weather"][0]["description"]
             timestamp = data["dt"]  # UNIX timestamp
 
-            # convert to EST (used chat to help with this). With UNIX, it becomes more difficult to read
+            # convert to EST time
             utc_time = datetime.utcfromtimestamp(timestamp)
             est = pytz.timezone('US/Eastern')
             est_time = utc_time.replace(tzinfo=pytz.utc).astimezone(est)
             formatted_time = est_time.strftime("%Y-%m-%d %I:%M %p")
 
-            cur.execute("INSERT OR IGNORE INTO Cities (name, country) VALUES (?, ?)", (city_name, country))
+            # insert city if not already there
+            cur.execute("INSERT OR IGNORE INTO Cities (name) VALUES (?)", (city_name,))
             conn.commit()
 
+            # get the city_id from the Cities table
             cur.execute("SELECT id FROM Cities WHERE name = ?", (city_name,))
             city_id = cur.fetchone()[0]
 
+            # avoid duplicate weather records
             cur.execute("SELECT * FROM Weather WHERE city_id = ? AND datetime = ?", (city_id, timestamp))
             if cur.fetchone():
                 print(f"Skipping duplicate weather for {city_name} at timestamp {timestamp}")
                 continue
 
+            # insert weather data
             cur.execute('''
                 INSERT INTO Weather (city_id, temperature, humidity, description, datetime, formatted_time)
                 VALUES (?, ?, ?, ?, ?, ?)
@@ -72,7 +75,7 @@ def store_weather_data():
         else:
             print(f"Failed to get weather for {city}: {data.get('message', 'Unknown error')}")
 
-        time.sleep(1)  # avoid rate limit
+        time.sleep(1)  # avoid hitting API rate limit
 
     conn.close()
 
