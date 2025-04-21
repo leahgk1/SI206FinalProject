@@ -2,26 +2,42 @@ import json
 import sqlite3
 import pandas as pd
 
-# Step 1: Load JSON data
-with open('hotel_prices.json', 'r') as f:
-    data = json.load(f)
+def load_json(file_path):
+    """Load JSON data from a file."""
+    with open(file_path, 'r') as f:
+        return json.load(f)
 
-# Step 2: Flatten the JSON into a list of dictionaries
-rows = []
-for city, hotels in data.items():
-    for hotel_name, price in hotels.items():
-        rows.append({'city': city, 'hotel': hotel_name, 'price': price})
+def flatten_json_to_rows(data):
+    """Convert nested city-hotel-price JSON into a flat list of dictionaries."""
+    rows = []
+    for city, hotels in data.items():
+        for hotel_name, price in hotels.items():
+            rows.append({'city': city, 'hotel': hotel_name, 'price': price})
+    return rows
 
-# Step 3: Create a DataFrame
-df = pd.DataFrame(rows)
+def create_dataframe(rows):
+    """Convert list of dictionaries to a pandas DataFrame."""
+    return pd.DataFrame(rows)
 
-# Step 4: Create a SQLite database and insert the data
-conn = sqlite3.connect('hotels.db')  # creates file hotels.db
-df.to_sql('hotel_prices', conn, if_exists='replace', index=False)
+def insert_dataframe_to_sqlite(df, db_path, table_name):
+    """Insert DataFrame into a SQLite database."""
+    conn = sqlite3.connect(db_path)
+    df.to_sql(table_name, conn, if_exists='replace', index=False)
+    return conn  # Return connection if further use needed
 
-# (Optional) Step 5: Query the database to verify
-result = pd.read_sql("SELECT * FROM hotel_prices LIMIT 5;", conn)
-print(result)
+def query_and_print_sample(conn, table_name, limit=5):
+    """Query and print a sample of the database table."""
+    query = f"SELECT * FROM {table_name} LIMIT {limit};"
+    result = pd.read_sql(query, conn)
+    print(result)
 
-# Close the connection
-conn.close()
+def main():
+    data = load_json('hotel_prices.json')
+    rows = flatten_json_to_rows(data)
+    df = create_dataframe(rows)
+    conn = insert_dataframe_to_sqlite(df, 'hotels.db', 'hotel_prices')
+    query_and_print_sample(conn, 'hotel_prices')
+    conn.close()
+
+if __name__ == "__main__":
+    main()
